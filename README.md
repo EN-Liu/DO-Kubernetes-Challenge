@@ -1,2 +1,2 @@
-# Log-monitoring-k8s
-The DigitalOcean Kubernetes Challenge
+# Kubernetes Logging using Elastic Cloud on Kubernetes (ECK)
+## The DigitalOcean Kubernetes Challenge
