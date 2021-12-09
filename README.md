@@ -1,2 +1,25 @@
 # Kubernetes Logging using Elastic Cloud on Kubernetes (ECK)
-## The DigitalOcean Kubernetes Challenge
+
+Elastic Cloud on Kubernetes (ECK) is based on kubernetes operator pattern, to extend the kubernetes capabilities for setup and management  of Elastic's products like Elasticsearch, Kibana, Beats, etc.
+
+## Preparing the K8s clusters
+### Setup the DigitalOcean-managed Kubernetes
+1. [Create the K8s cluster](https://docs.digitalocean.com/products/kubernetes/quickstart/)
+2. [Install DigitalOcean Command Line Interface (doctl)](https://github.com/digitalocean/doctl)
+3. Create Personal access tokens in the "API" from the menu of the control panel for doctl to managed your DO account.
+4. Type in `doctl auth init` command in your terminal and paste your access token.
+5. Using automated certificate management for automated certificate renewal and multiple-cluster management. The doctl command can be found in your K8s cluster setting. (Something like `doctl kubernetes cluster kubeconfig save xxxxxxx`)  
+6. Using `kubectl config get-contexts` command to check out your cluster connection.
+7. We're good to go!
+
+### (Optional) Installing Nginx Ingress Controller via DO's 1-Click App
+Install from your DO's K8s control panel and follow the instructions to check the Ingress controller is running.
+
+**Note: The NGINX Ingress Controller 1-Click App also includes a $10/month DigitalOcean Load Balancer.**
+
+
+btw, I found out that the LB health checks failed just after I create the Ingress Controller. After asking DO's support engineer, it's the "externalTrafficPolicy" configuration of the loadbalancer.
+
+Refer: 
+* [External Traffic Policies and Health Checks](https://docs.digitalocean.com/products/kubernetes/how-to/configure-load-balancers/)
+* [A Deep Dive into Kubernetes External Traffic Policies](https://www.asykim.com/blog/deep-dive-into-kubernetes-external-traffic-policies)
