@@ -58,7 +58,7 @@ kubectl get namespaces --no-headers -o custom-columns=:metadata.name \
   | xargs -n1 kubectl delete elastic --all -n
 ```
 
-2.Remove the ECK operator
+2. Remove the ECK operator
 ```
 kubectl delete -f https://download.elastic.co/downloads/eck/1.9.0/crds.yaml
 kubectl delete -f https://download.elastic.co/downloads/eck/1.9.0/operator.yaml
