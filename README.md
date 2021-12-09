@@ -2,6 +2,15 @@
 
 Elastic Cloud on Kubernetes (ECK) is based on kubernetes operator pattern, to extend the kubernetes capabilities for setup and management  of Elastic's products like Elasticsearch, Kibana, Beats, etc.
 
+## Supported Kubernetes Versions
+
+* Kubernetes 1.18-1.22
+* OpenShift 3.11, 4.5-4.9
+* Google Kubernetes Engine (GKE), Azure Kubernetes Service (AKS), and Amazon Elastic Kubernetes Service (EKS)
+
+Check the [Support Matrix](https://www.elastic.co/support/matrix#matrix_kubernetes) for more information
+
+
 ## Preparing the K8s clusters
 ### Setup the DigitalOcean-managed Kubernetes
 1. [Create the K8s cluster](https://docs.digitalocean.com/products/kubernetes/quickstart/)
