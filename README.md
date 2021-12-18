@@ -33,6 +33,14 @@ Refer:
 * [External Traffic Policies and Health Checks](https://docs.digitalocean.com/products/kubernetes/how-to/configure-load-balancers/)
 * [A Deep Dive into Kubernetes External Traffic Policies](https://www.asykim.com/blog/deep-dive-into-kubernetes-external-traffic-policies)
 
+## The architcture
+The architecture is divide into three part:
+* Filebeat: Collect the logs produced from pod
+* Elasticsearch: Store the logs
+* Kibana: Log statistics  visualization
+![](https://i.imgur.com/89OBhIJ.png)
+
+
 ## Deploy ECK CRD & operator in your Kubernetes cluster 
 
 The manifests will create a namespace called elastic-system and deploy the operator in it.
@@ -151,6 +159,10 @@ kubectl run counter --image=busybox --dry-run=client -o yaml -- /bin/sh, -c, 'i=
  ![](https://i.imgur.com/zodKAUH.png)
 * Now you have monitored your first log!
 
+## What next?
+* Configure a certificate for the ECK deployment
+* replace filebeat with fluentd or add logstash to parse logs
+* Many else to try out!
 
 ## To Remove ECK from your Kubernetes cluster
 
