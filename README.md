@@ -98,26 +98,58 @@ curl -u "elastic:$PASSWORD" -k "https://localhost:9200"
 }
 ```
 ## Deploy Kibana
-* Create Kibana from `/manifests/setup/kibana.yaml`
+>With Kibana, you can:
+>* Search and observe your data. 
+>* Analyze your data. Search for hidden insights, visualize what you’ve found in charts, gauges, maps, graphs, and more, and combine them in a dashboard.
+>* Manage, monitor, and secure the Elastic Stack. Manage your data, monitor the health of your Elastic Stack cluster, and control which users have access to which features.
+
+* Create Kibana as Deployment from `/manifests/setup/kibana.yaml`
 ```
 kubectl apply -f ./manifests/setup/kibana.yaml
 ```
+* Open a seperate terminal and port-forward your Kibana service to your localhost
 ```
 kubectl port-forward service/quickstart-kb-http 5601
 ```
+* Get your credentials from the secret(Same as Elasticsearch's password)
 ```
 kubectl get secret quickstart-es-elastic-user -o=jsonpath='{.data.elastic}' | base64 --decode; echo
 ```
+* Open https://localhost:5601 in your browser and login as username elastic and the password you get from the secret
 ```
 https://localhost:5601
 ```
 ## Deploy Filebeats
-* Create Filebeats from `/manifests/setup/filebeats.yaml`
+>Filebeat is a lightweight shipper for forwarding and centralizing log data. Installed as an agent on your servers, Filebeat monitors the log files or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
+
+* Create Filebeats as Daemonset from `/manifests/setup/filebeats.yaml`
 ```
 kubectl apply -f ./manifests/setup/filebeats.yaml
 ```
+* Filebeats will run as agent on every node to collect logs
 
 ## Deploy a busybox applicaton to produce some logs
+
+* Using kubectl run to create a busybox pod that produce "hello world" log
+```
+kubectl run counter --image=busybox --dry-run=client -o yaml -- /bin/sh, -c, 'i=0; while true; do echo "hello world: $i: $(date)"; i=$((i+1)); sleep 3; done
+```
+
+## Check the logs in Kibana
+* Open Kibana in the browser and login with default 
+    * username: elastic
+    * password: check the elastic secret using command:
+        *  `kubectl get secret quickstart-es-elastic-user -o=jsonpath='{.data.elastic}' | base64 --decode; echo`
+
+ ![](https://i.imgur.com/OdXcx7V.png)
+
+* Select Kibana and select "Discover"
+
+ ![](https://i.imgur.com/VYzxeia.png)
+
+* Type in "hello world" in the search bar for full text search
+ ![](https://i.imgur.com/zodKAUH.png)
+* Now you have monitored your first log!
 
 
 ## To Remove ECK from your Kubernetes cluster
