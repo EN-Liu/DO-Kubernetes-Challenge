@@ -11,7 +11,7 @@
 Check the [ECK Support Matrix](https://www.elastic.co/support/matrix#matrix_kubernetes) for more information
 
 
-## Preparing the K8s clusters
+## Preparing the K8s clusters (Using DOKS)
 1. [Create the K8s cluster](https://docs.digitalocean.com/products/kubernetes/quickstart/)
 2. [Install DigitalOcean Command Line Interface (doctl)](https://github.com/digitalocean/doctl)
 3. Create Personal access tokens in the "API" from the menu of the control panel for doctl to managed your DO account.
