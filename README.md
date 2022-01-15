@@ -20,6 +20,8 @@ Check the [ECK Support Matrix](https://www.elastic.co/support/matrix#matrix_kube
 6. Using `kubectl config get-contexts` command to check out your cluster connection.
 7. We're good to go!
 
+[![DigitalOcean Referral Badge](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg)](https://www.digitalocean.com/?refcode=8beff407ed2a&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
+
 ### (Optional) Installing Nginx Ingress Controller via DO's 1-Click App
 Install from your DO's K8s control panel and follow the instructions to check the Ingress controller is running.
 
